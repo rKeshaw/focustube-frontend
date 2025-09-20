@@ -46,7 +46,7 @@ async function handleSearchSubmit(event) {
     if (!query) return;
     resultsSidebar.innerHTML = `<p>Searching...</p>`;
     try {
-        const res = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=20&q=${encodeURIComponent(query)}&key=YOUR_API_KEY_HERE`);
+        const res = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=20&q=${encodeURIComponent(query)}&key="AIzaSyCDBue0NEe_hAOmCGJNdjLB9EgHpZL3_Lw"`);
         if (!res.ok) throw new Error(`API Error: ${res.statusText}`);
         const data = await res.json();
         displayResults(data.items);
