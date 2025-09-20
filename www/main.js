@@ -10,6 +10,7 @@ window.handlePlayerStateChange = (event) => {
 
 // --- DOM ELEMENTS & CONFIG ---
 const RENDER_BACKEND_URL = "https://focustube-backend-1d7l.onrender.com"; // IMPORTANT
+const YOUTUBE_API_KEY = "AIzaSyCDBue0NEe_hAOmCGJNdjLB9EgHpZL3_Lw"
 const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
 const resultsSidebar = document.getElementById('results-sidebar');
@@ -46,7 +47,7 @@ async function handleSearchSubmit(event) {
     if (!query) return;
     resultsSidebar.innerHTML = `<p>Searching...</p>`;
     try {
-        const res = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=20&q=${encodeURIComponent(query)}&key="AIzaSyCDBue0NEe_hAOmCGJNdjLB9EgHpZL3_Lw"`);
+        const res = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=20&q=${encodeURIComponent(query)}&key=YOUTUBE_API_KEY`);
         if (!res.ok) throw new Error(`API Error: ${res.statusText}`);
         const data = await res.json();
         displayResults(data.items);
